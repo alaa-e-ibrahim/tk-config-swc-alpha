@@ -12,20 +12,25 @@
 Hook which chooses an environment file to use based on the current context.
 """
 
-from tank import Hook
+import sgtk
+
+logger = sgtk.platform.get_logger(__name__)
 
 
-class PickEnvironment(Hook):
+class PickEnvironment(sgtk.Hook):
     def execute(self, context, **kwargs):
         """
         The default implementation assumes there are three environments, called shot, asset
         and project, and switches to these based on entity type.
         """
+
         if context.source_entity:
             if context.source_entity["type"] == "Version":
                 return "version"
             elif context.source_entity["type"] == "PublishedFile":
                 return "publishedfile"
+            elif context.source_entity["type"] == "Playlist":
+                return "playlist"
 
         if context.project is None:
             # Our context is completely empty. We're going into the site context.
@@ -36,13 +41,63 @@ class PickEnvironment(Hook):
             return "project"
 
         if context.entity and context.step is None:
-            # We have an entity but no step.
+            # We have an entity but no step.            
             if context.entity["type"] == "Asset":
+                context_entity = context.sgtk.shotgun.find_one("Asset",
+                                                               [["id", "is", context.entity["id"]]],
+                                                               ["sg_asset_parent","sg_asset_type","sg_asset_library"])
+                if context_entity.get("sg_asset_library") == "Lib":
+                    return "asset"
+
+                # Child Assets
+                if context_entity.get("sg_asset_parent") and context_entity.get("sg_asset_type") == "Animations":
+                    return "anim_asset"
+                elif context_entity.get("sg_asset_parent"):
+                    return "asset_child"
+
                 return "asset"
+            elif context.entity["type"] == "Sequence":
+                return "sequence" 
+            elif context.entity["type"] == "Shot":
+                return "shot"                     
+            elif context.entity["type"] == "CustomEntity01":
+                return "env_asset"  
+            elif context.entity["type"] == "CustomEntity03":
+                context_entity = context.sgtk.shotgun.find_one("CustomEntity03",
+                                                               [["id", "is", context.entity["id"]]],
+                                                               ["sg_asset_type"])
+                if context_entity.get("sg_asset_type") == "Campaigns":
+                    return "pub_asset"
+                return "prod_asset"                   
 
         if context.entity and context.step:
             # We have a step and an entity.
             if context.entity["type"] == "Asset":
+                context_entity = context.sgtk.shotgun.find_one("Asset",
+                                                               [["id", "is", context.entity["id"]]],
+                                                               ["sg_asset_parent","sg_asset_type","sg_asset_library"])
+                if context_entity.get("sg_asset_library") == "Lib":
+                    return "asset"
+
+                # Child Assets
+                if context_entity.get("sg_asset_parent") and context_entity.get("sg_asset_type") == "Animations":
+                    return "anim_asset_step"
+                elif context_entity.get("sg_asset_parent"):
+                    return "asset_child_step"                    
+
                 return "asset_step"
+            elif context.entity["type"] == "Sequence":
+                return "sequence_step"  
+            elif context.entity["type"] == "Shot":
+                return "shot_step"  
+            elif context.entity["type"] == "CustomEntity01":
+                return "env_asset_step"  
+            elif context.entity["type"] == "CustomEntity03":
+                context_entity = context.sgtk.shotgun.find_one("CustomEntity03",
+                                                               [["id", "is", context.entity["id"]]],
+                                                               ["sg_asset_type"])
+                if context_entity.get("sg_asset_type") == "Campaigns":
+                    return "pub_asset_step"
+                return "prod_asset_step"
 
         return None
