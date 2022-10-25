@@ -9,36 +9,34 @@
 # not expressly granted therein are reserved by Shotgun Software Inc.
 #
 
-description: Apps and Engines when launching with a project only context.
+description: Apps and engines loaded when a Sequence is loaded. Since std VFX
+  config template has a file system structure which is centered around pipeline
+  steps, this environment is largely empty. Most of the work takes place on a
+  level in the file system where both a shot and a pipeline step is available -
+  e.g Shot ABC, modeling, so all apps for loading, publishing etc. are located
+  in the shot_step environment. This environment mostly contains utility apps
+  and the tank work files app, which lets you choose a task to work on and load
+  associated content into an application.
 
 ################################################################################
 
 includes:
 - ./includes/frameworks.yml
-- ./includes/settings/tk-3dsmax.yml
 - ./includes/settings/tk-desktop.yml
-- ./includes/settings/tk-houdini.yml
 - ./includes/settings/tk-maya.yml
-- ./includes/settings/tk-photoshopcc.yml
-- ./includes/settings/tk-substancedesigner.yml
-- ./includes/settings/tk-substancepainter.yml
+- ./includes/settings/tk-houdini.yml
 - ./includes/settings/tk-shell.yml
 - ./includes/settings/tk-shotgun.yml
-- ./includes/settings/tk-multi-perforce.yml
 
 ################################################################################
-# configuration for all engines to load in a project context
+# configuration for all engines to load in a sequence context
 
 engines:
-  tk-3dsmax: "@settings.tk-3dsmax.project"
-  tk-desktop: "@settings.tk-desktop.project"
-  tk-houdini: "@settings.tk-houdini.project"
-  tk-maya: "@settings.tk-maya.project"
-  tk-photoshopcc: "@settings.tk-photoshopcc.project"
-  tk-substancedesigner: "@settings.tk-substancedesigner.project"
-  tk-substancepainter: "@settings.tk-substancepainter.project"
-  tk-shell: "@settings.tk-shell.project"
-  tk-shotgun: "@settings.tk-shotgun.project"
+  tk-desktop: "@settings.tk-desktop.shot"
+  tk-maya: "@settings.tk-maya.shot"
+  tk-houdini: "@settings.tk-houdini.shot"
+  tk-shell: "@settings.tk-shell.asset"
+  tk-shotgun: "@settings.tk-shotgun.asset"
 
 ################################################################################
 # reference all of the common frameworks

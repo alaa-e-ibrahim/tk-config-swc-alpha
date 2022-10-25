@@ -16,6 +16,11 @@ includes:
 - ../engine_locations.yml
 - ./tk-multi-launchapp.yml
 - ./tk-multi-publish2.yml
+- ./tk-multi-workfiles2.yml
+- ./tk-multi-perforce.yml
+- ./tk-multi-loader2.yml
+- ./tk-copyfromplaylist.yml
+# - ./tk-multi-starterapp.yml
 
 ################################################################################
 
@@ -24,6 +29,86 @@ settings.tk-desktop.site:
   apps:
   location: "@engines.tk-desktop.location"
 
+# asset
+settings.tk-desktop.asset:
+  apps:
+    tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+  location: "@engines.tk-desktop.location"
+
+# sequence
+settings.tk-desktop.sequence:
+  apps:
+    tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+  location: "@engines.tk-desktop.location"
+
+# sequence_step
+settings.tk-desktop.sequence_step:
+  apps:
+    # tk-multi-workfiles2: "@settings.tk-multi-workfiles2.sequence_step"
+    tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+  location: "@engines.tk-desktop.location"
+
+# shot
+settings.tk-desktop.shot:
+  apps:
+    tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+  location: "@engines.tk-desktop.location"
+
+# shot_step
+settings.tk-desktop.shot_step:
+  apps:
+    # tk-multi-workfiles2: "@settings.tk-multi-workfiles2.shot_step"
+    tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+  location: "@engines.tk-desktop.location"
+
+# asset_step
+settings.tk-desktop.asset_step:
+  apps:
+    # tk-multi-workfiles2: "@settings.tk-multi-workfiles2.asset_step"
+    tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+  location: "@engines.tk-desktop.location"
+
+# asset_child_step
+settings.tk-desktop.asset_child_step:
+  apps:
+    # tk-multi-workfiles2: "@settings.tk-multi-workfiles2.asset_child_step"
+    tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+  location: "@engines.tk-desktop.location"
+
+# seq_asset_step
+settings.tk-desktop.seq_asset_step:
+  apps:
+    # tk-multi-workfiles2: "@settings.tk-multi-workfiles2.seq_asset_step"
+    tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+  location: "@engines.tk-desktop.location"
+
+# env_asset_step
+settings.tk-desktop.env_asset_step:
+  apps:
+    # tk-multi-workfiles2: "@settings.tk-multi-workfiles2.env_asset_step"
+    tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+  location: "@engines.tk-desktop.location"
+
+# anim_asset_step
+settings.tk-desktop.anim_asset_step:
+  apps:
+    # tk-multi-workfiles2: "@settings.tk-multi-workfiles2.anim_asset_step"
+    tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+  location: "@engines.tk-desktop.location"    
+
+# pub_asset_step
+settings.tk-desktop.pub_asset_step:
+  apps:
+    # tk-multi-workfiles2: "@settings.tk-multi-workfiles2.pub_asset_step"
+    tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+  location: "@engines.tk-desktop.location"
+
+# prod_asset_step
+settings.tk-desktop.prod_asset_step:
+  apps:
+    # tk-multi-workfiles2: "@settings.tk-multi-workfiles2.prod_asset_step"
+    tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+  location: "@engines.tk-desktop.location"  
 
 # project
 settings.tk-desktop.project:
@@ -34,6 +119,11 @@ settings.tk-desktop.project:
       location: "@apps.tk-multi-devutils.location"
     tk-multi-launchapp: "@settings.tk-multi-launchapp"
     tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
+    tk-multi-perforce: "@settings.tk-multi-perforce.desktop"
+    tk-multi-loader2: "@settings.tk-multi-loader2.desktop"
+    tk-copyfromplaylist: "@settings.tk-copyfromplaylist"
+  show_recents: false
+  default_group: "Studio Tools"
   groups:
   - matches:
     - "*Fla*"
@@ -46,5 +136,6 @@ settings.tk-desktop.project:
     - "*Photoshop*"
     - "*After*"
     - "*Effects*"
+    - "*Substance*"
     name: Creative Tools
   location: "@engines.tk-desktop.location"

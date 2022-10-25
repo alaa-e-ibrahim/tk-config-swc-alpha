@@ -17,6 +17,8 @@ includes:
 
 # generic
 settings.tk-multi-shotgunpanel:
+  enable_context_switch: true
+  shotgun_fields_hook: "{config}/tk-multi-shotgunpanel/shotgun_fields.py"
   action_mappings:
     PublishedFile:
     - actions: [publish_clipboard]
@@ -29,9 +31,11 @@ settings.tk-multi-shotgunpanel:
       filters: {}
   location: "@apps.tk-multi-shotgunpanel.location"
 
-# 3dsmaxplus
-settings.tk-multi-shotgunpanel.3dsmaxplus: &settings_tk-multi-shotgunpanel_3dsmaxplus
-  actions_hook: '{self}/general_actions.py:{self}/tk-3dsmaxplus_actions.py'
+# 3dsmax
+settings.tk-multi-shotgunpanel.3dsmax:
+  enable_context_switch: true
+  shotgun_fields_hook: "{config}/tk-multi-shotgunpanel/shotgun_fields.py"  
+  actions_hook: "{engine}/tk-multi-shotgunpanel/basic/scene_actions.py"
   action_mappings:
     PublishedFile:
     - actions: [import]
@@ -54,13 +58,10 @@ settings.tk-multi-shotgunpanel.3dsmaxplus: &settings_tk-multi-shotgunpanel_3dsma
       filters: {}
   location: "@apps.tk-multi-shotgunpanel.location"
 
-# 3dsmax
-settings.tk-multi-shotgunpanel.3dsmax:
-  <<: *settings_tk-multi-shotgunpanel_3dsmaxplus
-  actions_hook: "{engine}/tk-multi-shotgunpanel/basic/scene_actions.py"
-
 # houdini
 settings.tk-multi-shotgunpanel.houdini:
+  enable_context_switch: true
+  shotgun_fields_hook: "{config}/tk-multi-shotgunpanel/shotgun_fields.py"  
   action_mappings:
     PublishedFile:
     - actions: [import]
@@ -87,6 +88,9 @@ settings.tk-multi-shotgunpanel.houdini:
 
 # maya
 settings.tk-multi-shotgunpanel.maya:
+  enable_context_switch: true
+  shotgun_fields_hook: "{config}/tk-multi-shotgunpanel/shotgun_fields.py"
+  actions_hook: "{self}/tk-maya_actions.py:{config}/tk-multi-loader2/tk-maya/tk-maya_actions.py"
   action_mappings:
     PublishedFile:
     - actions: [reference, import]
@@ -115,6 +119,8 @@ settings.tk-multi-shotgunpanel.maya:
 
 # photoshop
 settings.tk-multi-shotgunpanel.photoshop:
+  enable_context_switch: true
+  shotgun_fields_hook: "{config}/tk-multi-shotgunpanel/shotgun_fields.py"  
   actions_hook: "{self}/general_actions.py"
   action_mappings:
     PublishedFile:
@@ -126,6 +132,38 @@ settings.tk-multi-shotgunpanel.photoshop:
       filters: {published_file_type: Image}
     - actions: [add_as_a_layer, open_file]
       filters: {published_file_type: Texture}
+    - actions: [publish_clipboard]
+      filters: {}
+    Task:
+    - actions: [assign_task, task_to_ip]
+      filters: {}
+    Version:
+    - actions: [quicktime_clipboard, sequence_clipboard, add_to_playlist]
+      filters: {}
+  location: "@apps.tk-multi-shotgunpanel.location"
+
+# Substance Painter
+settings.tk-multi-shotgunpanel.substancepainter:
+  enable_context_switch: true
+  shotgun_fields_hook: "{config}/tk-multi-shotgunpanel/shotgun_fields.py"  
+  action_mappings:
+    PublishedFile:
+    - actions: [publish_clipboard]
+      filters: {}
+    Task:
+    - actions: [assign_task, task_to_ip]
+      filters: {}
+    Version:
+    - actions: [quicktime_clipboard, sequence_clipboard, add_to_playlist]
+      filters: {}
+  location: "@apps.tk-multi-shotgunpanel.location"
+
+# Substance Designer
+settings.tk-multi-shotgunpanel.substancedesigner:
+  enable_context_switch: true
+  shotgun_fields_hook: "{config}/tk-multi-shotgunpanel/shotgun_fields.py"  
+  action_mappings:
+    PublishedFile:
     - actions: [publish_clipboard]
       filters: {}
     Task:
