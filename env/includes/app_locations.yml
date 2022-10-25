@@ -113,6 +113,18 @@ apps.tk-houdini-mantranode.location:
   name: tk-houdini-mantranode
   version: v0.4.1
 
+apps.tk-copyfromplaylist.location:
+  # # Dev
+  # type: dev
+  # path: 'S:/Projects/ShotgunConfig/tk-copyfromplaylist'
+  # Github
+  #type: git
+  #path: https://github.com/alaa-e-ibrahim/tk-copyfromplaylist.git
+  #version: v0.3
+  type: git
+  path: https://github.com/studiowildcard/tk-copyfromplaylist.git
+  version: v0.4
+
 ################################################################################
 # reference all of the common frameworks
 frameworks: '@frameworks'
