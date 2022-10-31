@@ -94,7 +94,7 @@ settings.tk-desktop.anim_asset_step:
   apps:
     # tk-multi-workfiles2: "@settings.tk-multi-workfiles2.anim_asset_step"
     tk-multi-publish2: "@settings.tk-multi-publish2.standalone"
-  location: "@engines.tk-desktop.location"    
+  location: "@engines.tk-desktop.location"  
 
 # pub_asset_step
 settings.tk-desktop.pub_asset_step:
@@ -122,6 +122,7 @@ settings.tk-desktop.project:
     tk-multi-perforce: "@settings.tk-multi-perforce.desktop"
     tk-multi-loader2: "@settings.tk-multi-loader2.desktop"
     tk-copyfromplaylist: "@settings.tk-copyfromplaylist"
+    # tk-multi-workfiles2: "@settings.tk-multi-workfiles2"
   show_recents: false
   default_group: "Studio Tools"
   groups:

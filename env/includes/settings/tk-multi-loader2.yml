@@ -23,7 +23,7 @@ entity_browser_settings: &entity_browser_settings
     - [task_assignees, is, '{context.user}']
     - [project, is, '{context.project}']
     hierarchy: [project, entity, step, content]      
-  - caption: Assets
+  - caption: Project
     type: Hierarchy
     root: "{context.project}"
     publish_filters: [] 
@@ -125,7 +125,6 @@ settings.tk-multi-loader2.desktop:
   actions_hook: "{config}/tk-multi-loader2/tk-desktop/tk-desktop_actions.py:{config}/tk-multi-loader2/perforce_actions.py"
   action_mappings:
     Photoshop Image: [perforce_sync]
-    Audio File: [perforce_sync]
     3dsmax Scene: [perforce_sync]
     Alembic Cache: [perforce_sync]
     Image: [perforce_sync]
